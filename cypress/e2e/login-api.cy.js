@@ -17,7 +17,7 @@ describe('Testes em API', () => {
         })
 
         it('Deve verificar se o usuário está autenticado corretamente via POST na API', () => {
-            // Verificar se a autenticação está presente no localStorage
+            
             cy.get('@token').then(token => {
                 expect(token).to.exist;
             });
@@ -54,9 +54,9 @@ describe('Testes em API', () => {
                         cy.log(`O status ${response.status} não é o padrão 201`)
                     }
 
-                    expect(response.body).to.have.property('id') // Verifica se a resposta possui a propriedade "id"
+                    expect(response.body).to.have.property('id') 
                     expect(response.body).to.have.property('nome')
-                    expect(response.body).to.have.property('email') // Verifica se a propriedade "email" é igual ao valor enviado na requisição
+                    expect(response.body).to.have.property('email') 
                 })
             })
         })
