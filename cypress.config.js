@@ -4,7 +4,7 @@ dotenv.config();
 
 module.exports = defineConfig({
   projectId: "8qw3ta", 
-  recordKey: process.env.CYPRESS_RECORD_KEY, // Mantido na configuração principal
+  recordKey: "c5698c53-c7d0-4437-9bee-3155f695658d",
   retries: 2,
   e2e: {
     setupNodeEvents(on, config) {

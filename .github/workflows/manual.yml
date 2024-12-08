@@ -13,26 +13,41 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4      
-      - name: Checkout
+      
+      - name: Checkout Server
         uses: actions/checkout@v4
         with: 
           path: server      
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd server
+          npm ci
+          cd ../web
+          npm ci
+      
       - name: Start Server BackEnd
         run: |
           cd server
-          npm install
           npm start &
           until [ "$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)" == "200" ]; do
             echo "Waiting for server to start..."
-            sleep 1
+            sleep 5
           done
           echo "Server is running successfully."
         working-directory: server
+      
       - name: Start Web App FrontEnd
         run: |
           cd web
-          npm install
           npm start &        
+      
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
@@ -45,6 +60,15 @@ jobs:
           parallel: true
           group: 'Cypress Tests'
         env:
+          # Chave de registro do Cypress
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          
+          # Project ID do Cypress Dashboard
           CYPRESS_PROJECT_ID: 8qw3ta
-#Sempre verifique a indentação do seu arquivo yaml
+          
+          # Token do GitHub para autenticação
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Variáveis de ambiente adicionais para testes
+          CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_SENHA: ${{ secrets.CYPRESS_SENHA }}
