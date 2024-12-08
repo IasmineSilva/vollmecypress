@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "cy8iw9", // Certifique-se de que este é o ID correto do Cypress Cloud
+  retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      // Aqui você pode adicionar eventos personalizados se necessário
     },
     baseUrl: 'http://localhost:3000/',
     video: false,
@@ -18,9 +17,8 @@ module.exports = defineConfig({
       json: false,
       timestamp: "mmddyyyy_HHMMss"
     },
-    projectId: "8gi3z6", //Insira a projectId pela fornecida no seu Cypress Cloud
     defaultCommandTimeout: 60000,
-    env:{
+    env: {
       "email": "clinica@gmail.com",
       "senha": "4321",
       "api_login": "http://localhost:8080/auth/login",
@@ -28,7 +26,5 @@ module.exports = defineConfig({
       "api_especialista": "http://localhost:8080/especialista",
       "requestMode": true
     }
-
   },
-
 });
