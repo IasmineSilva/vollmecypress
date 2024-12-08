@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 module.exports = defineConfig({
   projectId: "8qw3ta", 
+  RECORD_KEY: process.env.CYPRESS_RECORD_KEY,
   retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
