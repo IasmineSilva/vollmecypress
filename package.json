@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "cypress-plugin-api": "^2.11.1",
+    "dotenv": "^16.4.7",
     "vollmedcy": "file:"
   }
 }

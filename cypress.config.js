@@ -1,10 +1,16 @@
 const { defineConfig } = require("cypress");
-
+const dotenv = require('dotenv');
+dotenv.config();
 module.exports = defineConfig({
   projectId: "8qw3ta", 
   retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
+      config.env = {
+        ...config.env,
+        ...process.env
+      };
+      return config;
       
     },
     baseUrl: 'http://localhost:3000/',
@@ -27,4 +33,6 @@ module.exports = defineConfig({
       "requestMode": true
     }
   },
+  recordKey: process.env.CYPRESS_RECORD_KEY
+
 });
