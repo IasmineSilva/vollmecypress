@@ -1,11 +1,11 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: "cy8iw9", // Certifique-se de que este é o ID correto do Cypress Cloud
+  projectId: "cy8iw9", 
   retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
-      // Aqui você pode adicionar eventos personalizados se necessário
+      
     },
     baseUrl: 'http://localhost:3000/',
     video: false,
