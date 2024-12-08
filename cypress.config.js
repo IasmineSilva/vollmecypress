@@ -1,10 +1,13 @@
 const { defineConfig } = require("cypress");
 const dotenv = require('dotenv');
 dotenv.config();
-
 module.exports = defineConfig({
   projectId: "8qw3ta", 
+<<<<<<< HEAD
   recordKey: "c5698c53-c7d0-4437-9bee-3155f695658d",
+=======
+  RECORD_KEY: process.env.CYPRESS_RECORD_KEY,
+>>>>>>> parent of 5f63472 (.)
   retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
@@ -13,6 +16,7 @@ module.exports = defineConfig({
         ...process.env
       };
       return config;
+      
     },
     baseUrl: 'http://localhost:3000/',
     video: false,
@@ -31,9 +35,9 @@ module.exports = defineConfig({
       "api_login": "http://localhost:8080/auth/login",
       "api_clinica": "http://localhost:8080/clinica",
       "api_especialista": "http://localhost:8080/especialista",
-      "requestMode": true,
-      // Adicione a chave de registro também no env
-      "RECORD_KEY": process.env.CYPRESS_RECORD_KEY
+      "requestMode": true
     }
-  }
+  },
+  recordKey: process.env.CYPRESS_RECORD_KEY
+
 });
