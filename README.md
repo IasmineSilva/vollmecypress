@@ -1,1 +1,1 @@
-Automação de testes.
+Automação de testes com pipeline 
